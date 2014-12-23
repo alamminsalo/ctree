@@ -39,17 +39,15 @@ void deleteTree(Node **root){
 }
 
 void printNode(Node *node, int level){
-	char *str = malloc(2*level+2);
+	char *str = malloc(2*level+1);
 	for (int i=0; i<level; i++){
 		strcat(str,"  ");	
 	}
-	if (level) strcat(str,"\\");
 	strcat(str,"\0");
 	if (node){
-		printf("\n%s%d",str,node->data);
-		printf(" level: %d",level);
-		printNode(node->left, level+1);
 		printNode(node->right, level+1);
+		printf("\n%s%d",str,node->data);
+		printNode(node->left, level+1);
 	}
 }
 
@@ -60,7 +58,7 @@ void printTree(Node *node){
 void printAscending(Node *node){
 	if (node){
 		printAscending(node->left);
-		printf(", %d",node->data);
+		printf("%d\n",node->data);
 		printAscending(node->right);
 	}
 }
@@ -68,7 +66,7 @@ void printAscending(Node *node){
 void printDescending(Node *node){
 	if (node){
 		printDescending(node->right);
-		printf(", %d",node->data);
+		printf("%d\n",node->data);
 		printDescending(node->left);
 	}
 }

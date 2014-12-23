@@ -6,18 +6,15 @@
 
 void menu(){
 	printf("\nACTIONS\n");
-	printf("1\tPRINT\n");
+	printf("1\tPRINT TREE\n");
 	printf("2\tINSERT\n");
-	printf("3\tINSERT RAND (1 MIL)\n");
+	printf("3\tINSERT RAND\n");
 	printf("4\tDELETE\n");
 	printf("5\tPRINT (ASC)\n");
 	printf("6\tPRINT (DESC)\n");
 	printf("0\tQUIT PROGRAM\n");
 	printf(">");
 } 
-void submenu(){
-	printf("ENTER DATA VALUE:\n");
-}
 
 int main(void){
 	Node *root = 0;
@@ -25,6 +22,7 @@ int main(void){
 
 	int selection = 1;
 	int _dataval;
+	int count;
 	while (selection){
 		menu();
 		scanf("%d",&selection);
@@ -39,13 +37,15 @@ int main(void){
 				printTree(root); 
 				break;
 			case 2: 
-				submenu();
+				printf("ENTER DATA VALUE:\n");
 				scanf("%d",&_dataval);
 				insert(&root,_dataval);
 				break;
 			case 3:
-				for (int i=0; i<1000000; i++)
-					insert(&root,rand()%1000000);
+				printf("ENTER N:\n");
+				scanf("%d",&count);
+				for (int i=0; i<count; i++)
+					insert(&root,rand()%100000);
 				break;
 			case 4:
 				deleteTree(&root);
